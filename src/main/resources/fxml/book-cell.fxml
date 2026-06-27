@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    One book = one instance of this file.
+    VBox stacks the cover on top and the title directly underneath.
+    Values (image, text) are left blank here and set in BookCellController.
+-->
+
+<VBox alignment="TOP_CENTER" onMouseClicked="#openPage" prefWidth="160.0" spacing="8.0" styleClass="book-cell" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ymt.ui.controller.BookCellController">
+
+    <ImageView fx:id="coverImage" fitHeight="200.0" fitWidth="140.0" preserveRatio="true" styleClass="cover-shadow" />
+
+    <Label fx:id="titleLabel" alignment="CENTER" maxWidth="150.0" styleClass="book-title" textAlignment="CENTER" wrapText="true" />
+</VBox>

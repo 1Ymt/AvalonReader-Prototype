@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    Chapter view. Layout regions:
+      left   = sidebar (return button + book cover + book description)
+      center = content area (chapter search bar at top + scrollable chapter list)
+    Chapter items (buttons) are populated at runtime by ChapterController.
+-->
+
+<BorderPane prefHeight="680" prefWidth="1024" styleClass="chapter-root" stylesheets="@../styles/chapter.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ymt.ui.controller.ChapterController">
+
+    <!-- ============ LEFT: return + cover + description ============ -->
+    <left>
+        <VBox spacing="12.0" styleClass="chapter-sidebar">
+            <padding>
+                <Insets bottom="16.0" left="16.0" right="12.0" top="16.0" />
+            </padding>
+
+            <Button onAction="#onReturn" styleClass="ghost-button" text="← Return" />
+
+            <ImageView fx:id="coverImage" fitHeight="200.0" fitWidth="160.0" preserveRatio="true" styleClass="cover-shadow" />
+
+            <TextArea fx:id="descriptionArea" editable="false" promptText="Book description…" styleClass="description-area" wrapText="true" VBox.vgrow="ALWAYS" />
+        </VBox>
+    </left>
+
+    <!-- ============ CENTER: search bar + chapter list ============ -->
+    <center>
+        <VBox>
+
+            <!-- Search bar -->
+            <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="chapter-search-bar">
+                <padding>
+                    <Insets bottom="12.0" left="16.0" right="16.0" top="12.0" />
+                </padding>
+                <TextField fx:id="searchField" onAction="#onSearch" prefWidth="260.0" promptText="Search chapters…" styleClass="search-field" />
+                <Button onAction="#onSearch" styleClass="ghost-button" text="Search" />
+            </HBox>
+
+            <!-- Chapter list (FlowPane populated at runtime by ChapterController) -->
+            <ScrollPane fitToWidth="true" styleClass="chapter-scroll" VBox.vgrow="ALWAYS">
+                <content>
+                    <FlowPane fx:id="chapterContainer" hgap="0.0" styleClass="chapter-flow" vgap="8.0">
+                        <padding>
+                            <Insets bottom="16.0" left="16.0" right="16.0" top="12.0" />
+                        </padding>
+                    </FlowPane>
+                </content>
+            </ScrollPane>
+
+        </VBox>
+    </center>
+
+</BorderPane>
